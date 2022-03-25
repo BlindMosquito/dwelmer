@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="dwelmer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/dwelmer_jar</output-path>
+    <root id="archive" name="dwelmer.jar">
+      <element id="module-output" name="dwelmer" />
+    </root>
+  </artifact>
+</component>
