@@ -6,12 +6,13 @@ import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.awt.event.*;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 public class Screen extends JFrame implements MouseListener, MouseMotionListener {
 
-  private boolean isWorking = true;
-  public boolean getIsWorking() { return isWorking; }
+  private boolean isDone = false;
+  public boolean isDone() { return isDone; }
 
   private class KeyListen implements KeyListener {
     @Override
@@ -38,7 +39,6 @@ public class Screen extends JFrame implements MouseListener, MouseMotionListener
       if(start == null || end == null) return;
       super.paintComponent(g);
       g.setColor(new Color(29, 58, 116, 60));
-      //g.fillRect(getStartX(), getStartY(), getEndX(), getEndY());
       Rectangle rectangle = getRectangle();
       g.fillRect((int)rectangle.getX(), (int)rectangle.getY(), (int)rectangle.getWidth(), (int)rectangle.getHeight());
     }
@@ -49,10 +49,13 @@ public class Screen extends JFrame implements MouseListener, MouseMotionListener
   private Pane pane = null;
 
   public Screen() {
+    //super(config);
+    setup();
+  }
+
+  private void setup() {
     pane = new Pane();
     this.setContentPane(pane);
-    this.setSize(600, 400);
-    this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     this.setUndecorated(true);
     this.setOpacity(0.2f);
     this.setVisible(true);
@@ -60,6 +63,11 @@ public class Screen extends JFrame implements MouseListener, MouseMotionListener
     this.addKeyListener(keys);
     this.addMouseListener(this);
     this.addMouseMotionListener(this);
+  }
+
+  private void screenSize(Rectangle bounds) {
+    this.setSize(300,400);
+    this.setLocation(0, 0);
   }
 
   public Rectangle getRectangle() {
@@ -104,7 +112,7 @@ public class Screen extends JFrame implements MouseListener, MouseMotionListener
   }
   @Override
   public void mouseReleased(MouseEvent mouseEvent) {
-    isWorking = false;
+    isDone = true;
   }
   @Override
   public void mouseEntered(MouseEvent mouseEvent) { }
