@@ -1,12 +1,9 @@
 package com.BlindMosquito;
 
-import org.w3c.dom.css.Rect;
 
-import javax.swing.plaf.InsetsUIResource;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.List;
 
 public class ScreenManager {
